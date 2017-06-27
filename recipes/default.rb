@@ -38,6 +38,14 @@ template 'keepalived.conf' do
   mode 0644
 end
 
+template 'keepalived' do
+  path '/etc/sysconfig/keepalived'
+  source 'keepalived.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+end
+
 service 'keepalived' do
   supports restart: true
   action [:enable, :start]
